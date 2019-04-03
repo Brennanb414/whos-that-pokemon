@@ -1,0 +1,105 @@
+{% load static %}
+<html>
+	<head>
+		<title> Who's That Pokemon!?</title>
+		<link rel="stylesheet" href="{% static 'css/whos_that.css' %}">
+		<link rel="icon" href="{% static 'favicon.ico' %}" type="image/png"> 
+		{% block css %}
+			<style> 
+			.container {
+				display: flex;
+				justify-content: center;
+			}
+			.poke-image {
+				width: 20em;
+				height: 20em;
+			}
+			.poke-button {
+				font-size: calc(24px + 0.2em);
+			}
+			
+			a.gen-button {
+				-webkit-appearance: button;
+				-moz-appearance: button;
+				appearance: button;
+
+				text-decoration: none;
+				color: initial;
+				padding: 5px;
+				margin: 5px;
+			}
+			</style>
+		{% endblock %}
+		
+		{% block javascript %}
+			<script>
+				function rightPokemon() {
+					document.getElementById("pokemon-sprite").style.filter = "none";
+					
+					document.getElementById("answer").style.display = "block";
+					document.getElementById("answer").innerHTML = "Correct: It's {{pokemon.name}}"
+					
+					document.getElementById("refresh-button").style.display = "block";	
+					
+					var pokeButtons = document.getElementsByClassName("poke-button");
+					for (var i=0; i < pokeButtons.length; i++) 
+					{
+						pokeButtons[i].style.display = "none";
+					}
+				}
+				function wrongPokemon() {
+					document.getElementById("pokemon-sprite").style.filter = "none";	
+					
+					document.getElementById("answer").style.display = "block";	
+					document.getElementById("answer").style.color = "red";
+					document.getElementById("answer").innerHTML = "Wrong: It's {{pokemon.name}}!";
+					
+					document.getElementById("refresh-button").style.display = "block";
+					
+					var pokeButtons = document.getElementsByClassName("poke-button");
+					for (var i=0; i < pokeButtons.length; i++) 
+					{
+						pokeButtons[i].style.display = "none";
+					}
+				}
+			</script>
+		{% endblock %}
+		
+	</head>
+	
+	<body style = "font-family: verdana">
+		<header>
+			<nav class = "container" style = "padding: 5px;">
+			
+				<a href = "http://brennanmbrown.com/whos_that/151/" class = "gen-button" > Gen 1 </a>
+				<a href = "http://brennanmbrown.com/whos_that/251/" class = "gen-button" > Gen 2 </a>
+				<a href = "http://brennanmbrown.com/whos_that/386/" class = "gen-button" > Gen 3 </a>
+				<a href = "http://brennanmbrown.com/whos_that/493/" class = "gen-button" > Gen 4 </a>
+				<a href = "http://brennanmbrown.com/whos_that/649/" class = "gen-button" > Gen 5 </a>
+				<a href = "http://brennanmbrown.com/whos_that/721/" class = "gen-button" > Gen 6 </a>
+				<a href = "http://brennanmbrown.com/whos_that/" class = "gen-button" > Gen 7 </a>
+				
+			</nav>
+			<div class = "container">
+				<h2 style = "margin:0">Who's That Pokemon!?</h2>
+			</div>
+		</header> 
+				
+		<div class = "container">
+				<img id = "pokemon-sprite" class = "poke-image" style = "display: absolute; filter: contrast(0%) brightness(0%)" src = "{{pokemon.sprite.url}}">  
+		</div>
+		<div class = "container">
+			<h3 id = "answer" style = "display:none;"> Answer </h3> 
+		</div>
+		<div class = "container">
+			{% for pokemon_name in poke_names %}
+				<button class = "poke-button" onclick = {% if pokemon_name == pokemon.name %} "rightPokemon()" {% else %} "wrongPokemon()" {% endif %} type = "button"> {{pokemon_name}} </button>
+			{% endfor %}
+		</div>
+		<div class = "container">
+			<button id = "refresh-button" style = "display:none;" value = "Next" onClick = "window.location.reload()">Next</button>
+		</div>
+		
+	</body>
+	
+</html>

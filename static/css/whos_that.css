@@ -1,0 +1,66 @@
+h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+h4 {
+	margin-bottom: 0.5em;
+}
+
+p {
+	margin-top: 0.3em;
+	font-size:0.8em;
+	padding-left: 3em
+}
+
+.skill-header {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.skill {
+	font-size: 0.8em
+}
+
+.indent {
+	padding-left: 3em
+}
+
+.links {
+	font-weight: normal;
+	font-size: 0.75em;
+}
+
+.parent {
+	background: mediumpurple;
+	padding: 1rem;
+}
+.child {
+	border: 1px solid indigo;
+	padding: 1rem;
+}
+
+.education {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.role {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.flex-parent {
+	display: flex;
+}
+
+.flex-header {
+	flex: 1;
+	font-size:1.2em;
+	font-weight: bold;
+}
+.flex-subheader{
+	flex: 1;
+	font-size:0.8em;
+	font-style: italic;
+}
