@@ -86,7 +86,7 @@
 		</header> 
 				
 		<div class = "container">
-				<img id = "pokemon-sprite" class = "poke-image" style = "display: absolute; filter: contrast(0%) brightness(0%)" src = "{{pokemon.sprite.url}}">  
+				<img id = "pokemon-sprite" class = "poke-image" draggable = "false" style = "display: absolute; filter: contrast(0%) brightness(0%)" src = "{{pokemon.sprite.url}}">  
 		</div>
 		<div class = "container">
 			<h3 id = "answer" style = "display:none;"> Answer </h3> 
@@ -100,6 +100,9 @@
 			<button id = "refresh-button" style = "display:none;" value = "Next" onClick = "window.location.reload()">Next</button>
 		</div>
 		
+		<a  href = "/" style = "position: absolute; left: 0px; top: 0px;">
+			<img src = "{% static 'favicon.ico' %}"
+		</a>
 	</body>
 	
 </html>
